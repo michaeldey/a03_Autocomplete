@@ -1,9 +1,3 @@
-/*
- * Michael Dey Walter Scott Domain
- * CSIS 2420
- * Assignment A03_Autocomplete
- */
-
 package a03_AutoComplete;
 
 import java.util.Comparator;
@@ -15,14 +9,34 @@ public class BinarySearchDeluxe {
 	 */
 
     // Return the index of the first key in a[] that equals the search key, or -1 if no such key.
-    public static <Key> int firstIndexOf(Key[] a, Key key, Comparator<Key> comparator)
-    {
-    	return 0;
+    public static <Key extends Comparable<Key>> int firstIndexOf(Key[] a, Key key, Comparator<Key> comparator){
+        int low = 0;
+        int high = a.length;
+        while (low <= high){
+            int i = (low+high)/2;
+            if (key == a[i]) return i;
+            if (comparator.compare(key, a[i]) < 0){
+                high = i-1;
+            }else if (comparator.compare(key, a[i]) > 0){
+                low = i+1;
+            }
+        }
+        return -1;
     }
 
     // Return the index of the last key in a[] that equals the search key, or -1 if no such key.
-    public static <Key> int lastIndexOf(Key[] a, Key key, Comparator<Key> comparator)
-    {
-    	return 0;
+    public static <Key extends Comparable<Key>> int lastIndexOf(Key[] a, Key key, Comparator<Key> comparator){
+        int low = 0;
+        int high = a.length;
+        while (low <= high){
+            int i = (low+high)/2;
+            if (key == a[i]) return i;
+            if (comparator.compare(key, a[i]) < 0){
+                high = i-1;
+            }else if (comparator.compare(key, a[i]) > 0){
+                low = i+1;
+            }
+        }
+        return -1;
     }
 }
