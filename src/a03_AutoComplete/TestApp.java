@@ -33,8 +33,17 @@ public class TestApp {
         System.out.println(d.compare(a, b));
         System.out.println(d.compare(b, a));
         
+        Term m1 = new Term("aa",2.0);
+        Term m2 = new Term("ba",1.0);
+        Term m3 = new Term("ca",2.5);
         
+        Term[] myArray = new Term[]{m1, m2, m3};
         
+        System.out.println("first index:");
+        System.out.println(BinarySearchDeluxe.firstIndexOf(myArray, myArray[0], d));
+        
+        System.out.println("last index:");
+        System.out.println(BinarySearchDeluxe.lastIndexOf(myArray, myArray[1], d));
     }
     
 }
