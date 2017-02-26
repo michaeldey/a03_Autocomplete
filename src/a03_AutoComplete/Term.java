@@ -18,6 +18,12 @@ public class Term implements Comparable<Term> {
 
     // Initialize a term with the given query string and weight.
     public Term(String query, double weight){
+        if (query == null){
+            throw new NullPointerException("Query can not be Null.");
+        }
+        if (weight < 0.0){
+            throw new IllegalArgumentException("Weight can not be Negative.");
+        }
         this.query = query;
         this.weight = weight;
     }
@@ -27,10 +33,11 @@ public class Term implements Comparable<Term> {
         return byReverseWeightOrderHelper;
     }
     
+    // Helper for byReverseWeightOrder() Makes code easier to understand and maintaine.
     private static Comparator<Term> byReverseWeightOrderHelper = new Comparator<Term>(){
         public int compare(Term t1, Term t2){
-            double weight1 = t1.getWeight();
-            double weight2 = t2.getWeight();
+            double weight1 = t1.weight;
+            double weight2 = t2.weight;
             return Double.compare(weight2 , weight1);
         };
     };
@@ -39,23 +46,17 @@ public class Term implements Comparable<Term> {
     public static Comparator<Term> byPrefixOrder(int r){
         return new ByPrefixOrderHelper(r);
     }
+    
     // Compare the terms in lexicographic order by query.
+    @Override
     public int compareTo(Term that){
-        return(Double.compare(this.getWeight(), that.getWeight()));
+        return(Double.compare(this.weight, that.weight));
     }
 
     // Return a string representation of the term in the following format:
     // the weight, followed by a tab, followed by the query.
     public String toString(){
-        return " ";
-    }
-
-    public String getQuery() {
-        return query;
-    }
-
-    public double getWeight() {
-        return weight;
+        return this.weight + "\t" + this.query;
     }
         
     // Compare the terms in lexicographic order but using only the first r characters of each query.
@@ -66,12 +67,16 @@ public class Term implements Comparable<Term> {
         }
         
         private void setR(int r){
-            this.r = r;
+            if(r >= 0){
+                this.r = r;
+            } else {
+                throw new IllegalArgumentException("Can not compare String with less then 0 Characters.");
+            }
         }
         
         public int compare(Term t1, Term t2){
-                String query1 = t1.getQuery().substring(0, r);
-                String query2 = t2.getQuery().substring(0, r);
+                String query1 = t1.query.substring(0, r);
+                String query2 = t2.query.substring(0, r);
                 return query1.compareToIgnoreCase(query2);
         };
     };
