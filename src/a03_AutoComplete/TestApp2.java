@@ -12,7 +12,7 @@ import java.util.Comparator;
  *
  * @author Owner
  */
-public class TestApp {
+public class TestApp2 {
 
     /**
      * @param args the command line arguments
@@ -32,18 +32,24 @@ public class TestApp {
 //        System.out.println(d.compare(a, a));
 //        System.out.println(d.compare(a, b));
 //        System.out.println(d.compare(b, a));
-//        
-        Term m1 = new Term("aa",2.0);
-        Term m2 = new Term("ba",1.0);
-        Term m3 = new Term("ca",2.5);
+//        System.out.println(a);
+//        System.out.println(b);
+        Term m1 = new Term("aa", 1.0);
+        Term m2 = new Term("aa", 1.0);
+        Term m3 = new Term("aa", 1.0);
         
-        Term[] myArray = new Term[]{m1, m2, m3};
+        
+        Term[] tArray = new Term[]{m1,m2,m3};
+        
+        System.out.println("test 1");
+        
+//        BinarySearchDeluxe<Term> search = new BinarySearchDeluxe<>();
+        
+//        System.out.println(search.firstIndexOf(tArray, tArray[1], Term.byPrefixOrder(1)));
         
         System.out.println("first index:");
-        System.out.println(BinarySearchDeluxe.firstIndexOf(myArray, myArray[0], Term.byPrefixOrder(1)));
+        System.out.println(BinarySearchDeluxe.firstIndexOf(tArray, tArray[0], Term.byPrefixOrder(1)));
         
-        System.out.println("last index:");
-        System.out.println(BinarySearchDeluxe.lastIndexOf(myArray, myArray[1], Term.byReverseWeightOrder()));
     }
     
 }
