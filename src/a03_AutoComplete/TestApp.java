@@ -18,22 +18,23 @@ public class TestApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Term a = new Term("aa",2.0);
-        Term b = new Term("ab",1.0);
-        Comparator c = Term.byReverseWeightOrder();
-        Comparator d = Term.byPrefixOrder(1);
-        System.out.println(c.compare(a, a));
-        System.out.println(c.compare(a, b));
-        System.out.println(c.compare(b, a));
-        System.out.println(d.compare(a, a));
-        System.out.println(d.compare(a, b));
-        System.out.println(d.compare(b, a));
-        d = Term.byPrefixOrder(2);
-        System.out.println(d.compare(a, a));
-        System.out.println(d.compare(a, b));
-        System.out.println(d.compare(b, a));
-        System.out.println(a);
-        System.out.println(b);
+//        Term a = new Term("aa",2.0);
+//        Term b = new Term("ab",1.0);
+//        Comparator c = Term.byReverseWeightOrder();
+//        Comparator d = Term.byPrefixOrder(1);
+//        System.out.println(c.compare(a, a));
+//        System.out.println(c.compare(a, b));
+//        System.out.println(c.compare(b, a));
+//        System.out.println(d.compare(a, a));
+//        System.out.println(d.compare(a, b));
+//        System.out.println(d.compare(b, a));
+//        System.out.println();
+//        d = Term.byPrefixOrder(2);
+//        System.out.println(d.compare(a, a));
+//        System.out.println(d.compare(a, b));
+//        System.out.println(d.compare(b, a));
+//        System.out.println(a);
+//        System.out.println(b);
         Term m0 = new Term("aa", 1.0);
         Term m1 = new Term("ba", 1.0);
         Term m2 = new Term("bb", 1.0);
