@@ -1,6 +1,7 @@
 package a03_AutoComplete;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class Autocomplete {
@@ -43,7 +44,8 @@ public class Autocomplete {
         for (int i = 0; i < tempArrayPointer; i++){
         	returnTerm[i] = terms[tempArray[i]]; 		//add to returnTerm[i] the value of terms at address tempArray[i]
         }
-    	Arrays.sort(returnTerm); 	//Arrays.sort should sort the Array by weight
+    	Arrays.sort(returnTerm, Collections.reverseOrder()); 	//Arrays.sort should sort the Array by weight, reverseOrder makes it descending
+    	
         return returnTerm;
     }
 
