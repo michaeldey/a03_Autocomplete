@@ -48,13 +48,15 @@ public class Term implements Comparable<Term> {
     }
     
     // Compare the terms in lexicographic order by query.
-    @Override
+    
+    //@Override
     public int compareTo(Term that){
         return(Double.compare(this.weight, that.weight));
     }
 
     // Return a string representation of the term in the following format:
     // the weight, followed by a tab, followed by the query.
+    @Override
     public String toString(){
         return this.weight + "\t" + this.query;
     }
@@ -79,7 +81,7 @@ public class Term implements Comparable<Term> {
                 String query2 = t2.query.substring(0, r);
                 return query1.compareToIgnoreCase(query2);
         };
-    };
+    }
         
 }
 
