@@ -24,18 +24,22 @@ public class Autocomplete {
     public Term[] allMatches(String prefix){
     	Term myPrefix = new Term(prefix, 0.0);				//create a new Term to compare with weight is 0.0 because it won't be used
     	Comparator d = Term.byPrefixOrder(prefix.length());  //create a byPrefixOrder Comparator that uses prefix.length
-    	Term[] tempTerm = new Term[terms.length];			//create an array to hold all of the qualifying terms temporarily
+    	int[] tempArray = new int[terms.length];			//create an array to hold all of the addresses of qualifying terms
     	
-    	int pointer = 0;								//pointer and counter for tempArray
+    	int tempArrayPointer = 0;								//pointer and counter for tempArray
+    	int mIndex = 0;
     	for (Term m : terms){
-    		if (d.compare(m, myPrefix) == 0)
+    		if (d.compare(m, myPrefix) == 0) //if m == myPrefix
     		{
-    			tempTerm[pointer++]=m; 					//add object to tempTerm and increment pointer
+    			tempArray[tempArrayPointer++]=mIndex; 	//add the address of the qualifying Term into tempArray & increment count
     		}
+    		mIndex++;
     	}
-        Term[] returnTerm = new Term[pointer];	//create a new array with size of pointer and fill it
-        for (int i = 0; i < pointer; i++){
-        	returnTerm[i] = tempTerm[i];
+        Term[] returnTerm = new Term[tempArrayPointer];	//create a new array with size of tempArrayPointer
+        
+        //fill returnTerm with qualifying terms
+        for (int i = 0; i < tempArrayPointer; i++){
+        	returnTerm[i] = terms[tempArray[i]]; 		//add to returnTerm[i] the value of terms at address tempArray[i]
         }
     	
         return returnTerm;
