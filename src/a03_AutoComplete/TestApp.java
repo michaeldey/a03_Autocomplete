@@ -35,12 +35,12 @@ public class TestApp {
 //        System.out.println(d.compare(b, a));
 //        System.out.println(a);
 //        System.out.println(b);
-        Term m0 = new Term("aa", 1.0);
+        Term m0 = new Term("ab", 1.0);
         Term m1 = new Term("ba", 1.0);
         Term m2 = new Term("bb", 1.0);
         Term m3 = new Term("bb", 1.0);
-        Term m4 = new Term("bc", 1.0);
-        Term m5 = new Term("bd", 1.0);
+        Term m4 = new Term("bc", 4.0);
+        Term m5 = new Term("bd", 3.0);
         Term m6 = new Term("be", 1.0);
         Term m7 = new Term("be", 1.0);
         Term m8 = new Term("be", 1.0);
@@ -48,12 +48,26 @@ public class TestApp {
         
         Term[] tArray = new Term[]{m0,m1,m2,m3,m4,m5,m6,m7,m8,m9};
         
-        System.out.println("test 1");
+//        System.out.println(new Autocomplete(tArray).numberOfMatches("b")); //should return 8
+//        System.out.println(new Autocomplete(tArray).numberOfMatches("aa")); //should return 1
+//        System.out.println(new Autocomplete(tArray).numberOfMatches("bb")); //should return 2
+//        System.out.println(new Autocomplete(tArray).numberOfMatches("c")); //should return 1
+//        System.out.println(new Autocomplete(tArray).numberOfMatches("d")); //should return 0
         
-        System.out.println(BinarySearchDeluxe.firstIndexOf(tArray, tArray[8], Term.byPrefixOrder(2)));
+//        System.out.println("test 1");
+//        
+//        System.out.println(BinarySearchDeluxe.firstIndexOf(tArray, tArray[8], Term.byPrefixOrder(2)));
+//        
+//        System.out.println(BinarySearchDeluxe.lastIndexOf(tArray, tArray[7], Term.byPrefixOrder(2)));
         
-        System.out.println(BinarySearchDeluxe.lastIndexOf(tArray, tArray[7], Term.byPrefixOrder(2)));
-        
+        for (Term m : tArray){
+        	System.out.println(m);
+        }
+        System.out.println("********");
+        Term[] newTerm = new Autocomplete(tArray).allMatches("b");
+        for (Term m : newTerm){
+        	System.out.println(m);
+        }
     }
     
 }

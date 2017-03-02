@@ -4,7 +4,9 @@ import static org.junit.Assert.*;
 
 import java.util.Comparator;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class TermTest {
 
@@ -14,6 +16,24 @@ public class TermTest {
 		Term myTerm = new Term("aa",2.0);
 		assertEquals("aa", myTerm.query);
 		assertTrue(myTerm.weight==2.0);
+	}
+	
+	@Rule public ExpectedException thrown = ExpectedException.none();
+	
+	//test null Query fed to Term
+	@Test
+	public void testNullQuery(){
+		thrown.expect(NullPointerException.class);
+    	thrown.expectMessage("Query can not be Null.");
+		Term myTerm = new Term(null, 2.0);
+	}
+	
+	//test Negative weight sent to Term
+	@Test
+	public void testNegativeWeight(){
+		thrown.expect(IllegalArgumentException.class);
+    	thrown.expectMessage("Weight can not be Negative.");
+		Term myTerm = new Term("aa", -2.0);
 	}
 
 	@Test
@@ -73,20 +93,20 @@ public class TermTest {
 	@Test
 	public void testCompareTo() {
 		//Term a should be > Term b
-        Term a = new Term("aa",2.0);
-        Term b = new Term("ab",1.0);
+        Term a = new Term("aa",1.0);
+        Term b = new Term("bb",1.0);
                 
         assertEquals(a.compareTo(a), 0); 			//test if Term a == Term a
         assertNotEquals(a.compareTo(a), 1); 		//test if Term a !> Term a
         assertNotEquals(a.compareTo(a), -1); 		//test if Term a !< Term a
         
-        assertEquals(a.compareTo(b), 1);			//test if Term a > Term b
+        assertEquals(a.compareTo(b), -1);			//test if Term a < Term b
         assertNotEquals(a.compareTo(b), 0);			//test if Term a != Term b
-        assertNotEquals(a.compareTo(b), -1);		//test if Term a !< Term b
+        assertNotEquals(a.compareTo(b), 1);			//test if Term a !> Term b
         
-        assertEquals(b.compareTo(a), -1);			//test if Term b < Term a
-        assertNotEquals(b.compareTo(a), 1);			//test if Term b !> Term a
+        assertEquals(b.compareTo(a), 1);			//test if Term b > Term a
         assertNotEquals(b.compareTo(a), 0);			//test if Term b != Term a
+        assertNotEquals(b.compareTo(a), -1);		//test if Term b !< Term a
 	}
 
 	@Test

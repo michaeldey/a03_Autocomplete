@@ -51,7 +51,7 @@ public class Term implements Comparable<Term> {
     
     //@Override
     public int compareTo(Term that){
-        return(Double.compare(this.weight, that.weight));
+        return(this.query.compareTo(that.query));
     }
 
     // Return a string representation of the term in the following format:

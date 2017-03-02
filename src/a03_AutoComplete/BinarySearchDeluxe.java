@@ -12,7 +12,7 @@ public class BinarySearchDeluxe {
     public static <Key extends Comparable<Key>> int firstIndexOf(Key[] a, Key key, Comparator<Key> comparator){
     	validate(a, key, comparator);
         int low = 0;
-        int high = a.length;
+        int high = a.length-1;
         while (low <= high){
             int i = (low+high)/2;
             if (comparator.compare(key, a[i]) == 0) {
@@ -34,7 +34,7 @@ public class BinarySearchDeluxe {
     public static <Key extends Comparable<Key>> int lastIndexOf(Key[] a, Key key, Comparator<Key> comparator){
     	validate(a, key, comparator);
         int low = 0;
-        int high = a.length;
+        int high = a.length-1;
         while (low <= high){
             int i = (low+high)/2;
             if (comparator.compare(key, a[i]) == 0) {
