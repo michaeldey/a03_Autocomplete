@@ -1,3 +1,9 @@
+/*
+ * Michael Dey Walter Scott Domain
+ * CSIS 2420
+ * Assignment A03_Autocomplete
+ */
+
 package a03_AutoComplete;
 
 import java.util.Comparator;
@@ -52,6 +58,7 @@ public class BinarySearchDeluxe {
         return -1;
     }
     
+    // private method validates all inputs are not null.
     private static <Key> void validate(Key[] a, Key key, Comparator<Key> comparator){
     	if (a == null)throw new NullPointerException("Array can not be Null.");
     	if (key == null)throw new NullPointerException("Key can not be Null.");

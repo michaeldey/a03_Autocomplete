@@ -1,3 +1,9 @@
+/*
+ * Michael Dey Walter Scott Domain
+ * CSIS 2420
+ * Assignment A03_Autocomplete
+ */
+
 package a03_AutoComplete;
 
 import static org.junit.Assert.*;

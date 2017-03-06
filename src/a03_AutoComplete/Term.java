@@ -84,4 +84,3 @@ public class Term implements Comparable<Term> {
     }
         
 }
-
